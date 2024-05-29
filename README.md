@@ -28,16 +28,15 @@ SELECT redemptionDate, redemptionCount AS minRedemptions
 FROM weeklyTransactionTbl
 WHERE redemptionCount in (SELECT MIN(redemptionCount) FROM weeklyTransactionTbl)
 
-redemptionDate	min Redemptions
-2023-11-05	3702
+![image](https://github.com/kami71539/IlmarIntelligence/assets/49458424/51ecef90-a797-4f96-9277-29725db2998f)
 
 
 -- Which date had the most number of redemptions and what was the redemption count?
 SELECT redemptionDate, redemptionCount AS maxRedemptions
 FROM weeklyTransactionTbl
 WHERE redemptionCount in (SELECT MAX(redemptionCount) FROM weeklyTransactionTbl)
-redemptionDate	maxRedemptions
-2023-11-04	5224
+
+![image](https://github.com/kami71539/IlmarIntelligence/assets/49458424/a7b30649-af68-4422-bd2f-17bf3459387c)
 
 
 What was the createDateTime for each redemptionCount in questions 1 and 2?
@@ -70,5 +69,7 @@ redemption date, for the date range 2023-10-30 to 2023-11-05, for retailer "ABC 
 In words, describe how you would do this (no need to write a query, unless you’d like to).
 
 Change 1 - I could use Lead or Lag function partitioning on the basis of retail id, redemptionDate, and sorting by createdatetime (asc/desc depending on lead or lag) and keep only the rows where lead/lag is null.
+
 Change 2- I could have used subquery instead of with clause and reduced the query length.
+
 Change 3 - I could have used left join instead of inner join and applied filter on retailer name outside the join.
